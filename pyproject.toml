@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "project2_demyanova"
+version = "0.1.0"
+description = "Проект 2. Примитивная база данных."
+authors = ["Tatyana Demyanova <DemyanovaTS@mail.ru>"]
+readme = "README.md"
+packages = [{ include = "primitive_db", from = "src" }]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+prompt = "^0.4.1"
+
+[tool.poetry.scripts]
+project = "primitive_db.main:main"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.14.2"
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+exclude = ["venv", ".venv", "dist", "__pycache__"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+ignore = []
