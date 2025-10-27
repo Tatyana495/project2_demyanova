@@ -42,19 +42,7 @@ def save_metadata(filepath: str, data: Any) -> None:
     """
     Сохраняет переданные данные в JSON-файл.
     Создаёт директорию, если её не существует.
-    Бросает TypeError, если объект не сериализуем в JSON.
-
-    Parameters
-    ----------
-    filepath : str
-        Путь к JSON-файлу (например, 'data/meta.json').
-    data : Any
-        Любой JSON-сериализуемый объект
-        (dict, list, str, int, float, bool, None).
-    Пример использования
-    --------------------
-    meta = {"version": 1, "tables": ["users", "orders"]}
-    save_metadata("storage/metadata.json", meta)
+    TypeError, если объект не сериализуем в JSON.
     """
     # гарантируем существование директории
     os.makedirs(os.path.dirname(filepath) or ".", exist_ok=True)

@@ -13,46 +13,6 @@ def create_table(
 ) -> Dict[str, Any]:
     """
     Создаёт описание таблицы в metadata.
-
-    Параметры
-    ---------
-    metadata : dict
-        Общий словарь метаданных БД. Ожидается структура {"tables": {...}}.
-    table_name : str
-        Имя новой таблицы.
-    columns : iterable[tuple[str, str|type]]
-        Список столбцов без ID. Каждый элемент — кортеж (имя, тип),
-        где тип — 'int' | 'str' | 'bool' или соответствующий Python-тип
-        (int, str, bool).
-
-    Поведение
-    ---------
-    - Автоматически добавляет столбец ('ID', 'int') в начало.
-    - Проверяет, что таблицы с таким именем ещё нет.
-    - Валидирует типы и дубли имён столбцов.
-    - В случае успеха обновляет metadata и возвращает его.
-
-    Исключения
-    ----------
-    ValueError — при дублирующемся имени таблицы, неверном формате столбцов,
-                 неподдерживаемом типе или дублировании имён колонок.
-                 meta = {"tables": {}}
-
-    Пример использования
-    --------------------
-    meta = create_table(
-        meta,
-        table_name="users",
-        columns=[
-            ("name", "str"),
-            ("age", int),
-            ("is_active", "bool"),
-        ],
-    )
-
-    print(meta["tables"]["users"]["columns"])
-    # {'ID': 'int', 'name': 'str', 'age': 'int', 'is_active': 'bool'}
-
     """
     if not isinstance(metadata, dict):
         raise ValueError("metadata должен быть словарём.")
@@ -126,32 +86,6 @@ def create_table(
 def drop_table(metadata: Dict[str, Any], table_name: str) -> Dict[str, Any]:
     """
     Удаляет таблицу из метаданных.
-
-    Parameters
-    ----------
-    metadata : dict
-        Общий словарь метаданных БД. Ожидается структура {"tables": {...}}.
-    table_name : str
-        Имя таблицы для удаления.
-
-    Returns
-    -------
-    dict
-        Обновлённые метаданные.
-
-    Raises
-    ------
-    ValueError
-        Если metadata не словарь, имя таблицы некорректно,
-        или таблица не найдена.
-
-    Пример использования
-    --------------------
-    meta = {"tables": {"users": {"columns": {"ID": "int"},"auto_increment":
-    1,"rows": 0}}}
-    meta = drop_table(meta, "users")
-    print(meta)  # {'tables': {}}
-
     """
     if not isinstance(metadata, dict):
         raise ValueError("metadata должен быть словарём.")

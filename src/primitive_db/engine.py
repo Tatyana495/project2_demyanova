@@ -1,4 +1,4 @@
-"""тот файл будет отвечать за запуск,
+"""Этот файл будет отвечать за запуск,
     игровой цикл и парсинг команд."""
 
 import os
@@ -20,12 +20,12 @@ METADATA_FILE = os.getenv("PRIMITIVE_DB_META", "storage/metadata.json")  # noqa:
 
 HELP_TEXT = """
 Доступные команды:
-  create <table> <col:type> [col:type ...]  — создать таблицу (типы: int|str|bool)  # noqa: E501
-  drop <table>                               — удалить таблицу
-  show tables                                — показать список таблиц
-  describe <table>                           — показать структуру таблицы
-  help                                       — показать подсказку
-  exit / quit                                — выход
+  create <table> <col:type> [col:type ...]  - создать таблицу (типы: int|str|bool)  # noqa: E501
+  drop <table>                               - удалить таблицу
+  show tables                                - показать список таблиц
+  describe <table>                           - показать структуру таблицы
+  help                                       - показать подсказку
+  exit / quit                                - выход
 Примеры:
   create users name:str age:int is_active:bool
   drop users
@@ -162,5 +162,4 @@ def run() -> None:
                 print(f"Ошибка: {e}")
             continue
 
-        # неизвестная команда
         print("Неизвестная команда. Введите 'help'.")
