@@ -5,8 +5,8 @@
 Поддерживаемые типы значений: int, bool(true/false), str.
 """
 
-from typing import Any, Dict, List, Tuple
 import shlex
+from typing import Any, Dict, List, Tuple
 
 TRUE_LIT = "true"
 FALSE_LIT = "false"

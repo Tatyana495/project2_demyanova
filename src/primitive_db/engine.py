@@ -8,17 +8,19 @@ from pathlib import Path
 
 from prettytable import PrettyTable
 
-from .utils import (
-    load_metadata,
-    save_metadata,
-    load_table_data,
-    save_table_data,
-    delete_table_data,
-)
-from .core import create_table, drop_table, insert as core_insert
-from .core import select as core_select, update as core_update
+from .core import create_table, drop_table
 from .core import delete as core_delete
-from .parser import parse_where, parse_set, parse_value
+from .core import insert as core_insert
+from .core import select as core_select
+from .core import update as core_update
+from .parser import parse_set, parse_value, parse_where
+from .utils import (
+    delete_table_data,
+    load_metadata,
+    load_table_data,
+    save_metadata,
+    save_table_data,
+)
 
 
 def welcome() -> None:
@@ -131,7 +133,7 @@ def _parse_columns(tokens: list[str]) -> list[tuple[str, str]]:
     return cols
 
 
-# ---------- Разбор и выполнение команд с данными ----------
+# Разбор и выполнение команд с данными
 
 def _strip_parens(s: str) -> str:
     s = s.strip()
@@ -172,7 +174,7 @@ def _parse_values_list(values_str: str) -> list[object]:
 
 
 def _handle_insert(line: str, metadata: dict) -> None:
-    # отделим 'values (...)' (регистронезависимо)
+    
     m = re.search(r"\bvalues\b", line, flags=re.IGNORECASE)
     if not m:
         raise ValueError("Синтаксис: insert into <table> values (...).")
