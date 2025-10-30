@@ -1,5 +1,41 @@
+# virtualenvs
 .venv/
-.ruff_cache/
+.venv_use/
+venv/
+
+# python cache & build metadata
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+*.dist-info/
+
+# build & dist
+build/
 dist/
+
+# tooling caches
+.ruff_cache/
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# runtime data (генерируется приложением)
+data/
 storage/
+
+# local env hints
+.env
+.envrc
+.python-version
+
+# lockfile
 poetry.lock

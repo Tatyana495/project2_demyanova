@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "project2_demyanova"
-version = "0.1.0"
+version = "0.1.2"
 description = "Проект 2. Примитивная база данных."
 authors = ["Tatyana Demyanova <DemyanovaTS@mail.ru>"]
 readme = "README.md"
@@ -9,12 +9,17 @@ packages = [{ include = "primitive_db", from = "src" }]
 [tool.poetry.dependencies]
 python = "^3.12"
 prompt = "^0.4.1"
+prettytable = "^3.16.0"
 
 [tool.poetry.scripts]
 project = "primitive_db.main:main"
+database = "primitive_db.main:main"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.14.2"
+pytest = "^8.4.2"
+flake8 = "^7.3.0"
+black = "^25.9.0"
 
 [tool.ruff]
 line-length = 88
