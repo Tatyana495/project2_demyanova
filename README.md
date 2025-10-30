@@ -189,50 +189,6 @@ info <table>
 Произошла непредвиденная ошибка: <сообщение>
 ```
 
----
-
-## 🎥 Демонстрация (asciinema)
-
-### Вариант A — интерактивно
-```bash
-pipx install asciinema   # или: sudo apt-get install asciinema
-asciinema rec -t "Primitive DB: decorators demo" demo.cast
-project
-# Выполните:
-# create users name:str age:int is_active:bool
-# insert into users values ("Sergei", 28, true)
-# select from users
-# delete from users where name = "Sergei"   # ответьте: n, затем повторите и ответьте: y
-# drop users                                # ответьте: y
-# exit
-# затем завершите запись (Ctrl+D / exit)
-asciinema upload demo.cast
-```
-
-### Вариант B — сценарий без ручного ввода
-```bash
-cat > demo.sh <<'SH'
-#!/usr/bin/env bash
-set -e
-project <<'CMDS'
-create users name:str age:int is_active:bool
-insert into users values ("Sergei", 28, true)
-select from users
-delete from users where name = "Sergei"
-n
-delete from users where name = "Sergei"
-y
-drop users
-y
-exit
-CMDS
-SH
-chmod +x demo.sh
-asciinema rec -t "Primitive DB: decorators demo" demo.cast -c "./demo.sh"
-```
-
----
-
 ## 🧪 Тесты и линт
 
 ```bash
